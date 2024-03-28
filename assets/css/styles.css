@@ -1,0 +1,84 @@
+
+/* ================================================= */
+/* FIRST MOBILE */
+/* ================================================= */
+.hidden{
+    visibility: hidden;
+}
+.unhidden{
+    visibility: visible;
+}
+#general{
+    background-image: url(../img/background.jpg);
+    height: 100vh;
+    width: 100%;
+}
+#main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#contenedorlogo{
+    display: flex;
+    justify-content: center;
+}
+#contenedorlogo img{
+    padding-top: 7px;
+    height: 60px;
+}
+#mobile-menu{
+    width: 90vw;
+    margin-top: 10px;
+    color: #ffffff;
+    font-size: 50px;
+    text-align: center;
+    background-color: #000000;
+    border-width: 2px;
+    border-color: #FFE81F;
+    border-style: solid;
+    border-radius: 10px;
+    user-select: none;
+}
+#navbar{
+    margin-top: 10px;
+    display: none;
+    flex-direction: column;
+}
+#mobile-navbar{
+    display: none;
+}
+#mobile-navbar:checked ~ #navbar{
+    display: flex;
+}
+
+
+
+/* ================================================= */
+/* MEDIA QUERIES */
+/* ================================================= */
+
+
+@media only screen and (min-width:576px){
+
+}
+
+
+@media only screen and (min-width:768px){
+
+
+}
+
+
+
+@media only screen and (min-width:992px){
+
+
+
+}
+
+@media only screen and (min-width:1200px){
+
+
+
+
+}
