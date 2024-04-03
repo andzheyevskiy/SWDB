@@ -130,6 +130,20 @@ header{
     cursor: pointer;
     text-align: center;
 }
+#ficha-films{
+    flex-direction: column;
+}
+
+#f-image{
+    height: 50px;
+    margin: 10px;
+}
+.f-contents{
+    color: #ffffff;
+    display: inline-block;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
 
 /* ================================================= */
 /* MEDIA QUERIES */
