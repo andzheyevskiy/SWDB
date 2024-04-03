@@ -10,14 +10,16 @@
 /* ================================================= */
 /* FIRST MOBILE */
 /* ================================================= */
-.hidden{
-    visibility: hidden;
+body{
+    background-image: url(../img/background.jpg);
 }
-.unhidden{
-    visibility: visible;
+.hidden{
+    display: none;
+}
+.flex{
+    display: flex;
 }
 #general{
-    background-image: url(../img/background.jpg);
     height: 100vh;
     width: 100%;
 }
@@ -25,6 +27,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 #contenedorlogo{
     display: flex;
@@ -33,6 +36,13 @@
 #contenedorlogo img{
     padding-top: 7px;
     height: 60px;
+    cursor: pointer;
+}
+header{
+    position: absolute;
+    top: 0;
+    left: 5%;
+    right: 5%;
 }
 #mobile-menu{
     width: 90vw;
@@ -62,6 +72,7 @@
 }
 .buttons{
     height: 40px;
+
     margin-top: 3px;
     background-color: #000000;
     border: solid 1px #FFE81F;
@@ -72,9 +83,53 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    cursor: pointer;
 }
-
+#main-container{
+    width: 95%;
+    border: solid 3px #FFE81F;
+    border-radius: 5px;
+    margin-top: 160px;
+}
+.default{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+    color: #FFE81F;
+    font-family: StarJediOutline;
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 0px #000000;
+}
+.default-contents{
+    height: 200px;
+    width: 200px;
+    margin-top: 35px;
+    user-select: none;
+    cursor: pointer;
+}
+.default-contents img{
+    height: 100%;
+    width: 100%;
+    border: solid 1px #FFE81F;
+    border-radius: 5px;
+}
+.siguiente-anterior{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+#siguiente,#anterior{
+    color: #FFE81F;
+    font-family: StarJediOutline;
+    font-size: 20px;
+    margin-left: 25px;
+    margin-right: 25px;
+    cursor: pointer;
+    text-align: center;
+}
 
 /* ================================================= */
 /* MEDIA QUERIES */
@@ -85,11 +140,26 @@
     #contenedorlogo img{
         height: 70px;
     }
+    .default{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    .default-contents{
+        height: 225px;
+        width: 225px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 
 }
 
 /*================================================*/
 @media only screen and (min-width:768px){
+    header{
+        position: static;
+    }
     #mobile-menu{
         display: none;
     }
@@ -100,6 +170,9 @@
     .buttons{
         font-size: 25px;
         margin-left: 3px;
+    }
+    #main-container{
+        margin-top: 20px;
     }
 
 
