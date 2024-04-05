@@ -20,6 +20,7 @@ body{
     display: flex;
 }
 #general{
+    margin-top: 15px;
     height: 100vh;
     width: 100%;
 }
@@ -104,18 +105,26 @@ header{
     text-align: center;
     text-shadow: 1px 1px 0px #000000;
 }
+#busqueda{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .default-contents{
     height: 200px;
     width: 200px;
     margin-top: 35px;
     user-select: none;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 .default-contents img{
     height: 100%;
     width: 100%;
     border: solid 1px #FFE81F;
     border-radius: 5px;
+    margin-bottom: 2px;
 }
 .siguiente-anterior{
     display: flex;
@@ -135,8 +144,9 @@ header{
     flex-direction: column;
 }
 
-#f-image,#p-image{
-    height: 50px;
+#f-image,#p-image,#pl-image,#sp-image,#v-image,#s-image{
+    height: 200px;
+    width: 200px;
     margin: 10px;
 }
 .f-contents{
@@ -181,11 +191,25 @@ header{
         flex-wrap: wrap;
         justify-content: space-evenly;
     }
+    #busqueda{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
     .default-contents{
         height: 225px;
         width: 225px;
         margin-left: 10px;
         margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    #f-image,#p-image,#pl-image,#sp-image,#v-image,#s-image{
+        height: 225px;
+        width: 225px;
+        margin: 10px;
+    }
+    #ficha-films,#ficha-people,#ficha-planets,#ficha-species,#ficha-vehicles,#ficha-starships{
+        flex-direction: column;
     }
 
 }
@@ -209,6 +233,19 @@ header{
     #main-container{
         margin-top: 20px;
     }
+    .default{
+        font-size: 23px;
+    }
+    .default-contents{
+        height: 250px;
+        width: 250px;
+        margin-bottom: 15px;
+    }
+    #f-image,#p-image,#pl-image,#sp-image,#v-image,#s-image{
+        height: 250px;
+        width: 250px;
+        margin: 15px;
+    }
 
 
 }
@@ -219,6 +256,26 @@ header{
     #contenedorlogo img{
         height: 75px;
     }
+    .default{
+        font-size: 27px;
+        
+    }
+    .default-contents{
+        aspect-ratio: 1/1;
+        min-height: 250px;
+        min-width: 250px;
+        width: 31%;
+        height: 31%;
+        max-width: 300px;
+        max-height: 300px;
+        margin-bottom: 20px;
+    }
+    #f-image,#p-image,#pl-image,#sp-image,#v-image,#s-image{
+        height: 300px;
+        width: 300px;
+        margin: 15px;
+    }
+
 
 
 }

@@ -6,6 +6,8 @@
     <title>Star Wars Database</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <script type="module" src="./assets/js/swapi.js"></script>
+    <link rel="shortcut icon" href="./assets/img/icon.png" type="image/x-icon">
 </head>
 <body>
     <div id="general">
@@ -38,6 +40,8 @@
                  <!-- ==================================================== -->
                 <div id="contenedor-busqueda" class="hidden">
                     <div id="busqueda">
+                        <!-- class="default-contents" -->
+                    <div id="r0" class="default-contents"><img id="r0img" src=""><p id="r0url" class="hidden"></p> </div>
                     <div id="r1" class="default-contents"><img id="r1img" src=""><p id="r1url" class="hidden"></p> </div>
                     <div id="r2" class="default-contents"><img id="r2img" src=""><p id="r2url" class="hidden"></p> </div>
                     <div id="r3" class="default-contents"><img id="r3img" src=""><p id="r3url" class="hidden"></p> </div>
@@ -47,7 +51,6 @@
                     <div id="r7" class="default-contents"><img id="r7img" src=""><p id="r7url" class="hidden"></p> </div>
                     <div id="r8" class="default-contents"><img id="r8img" src=""><p id="r8url" class="hidden"></p> </div>
                     <div id="r9" class="default-contents"><img id="r9img" src=""><p id="r9url" class="hidden"></p> </div>
-                    <div id="r10" class="default-contents"><img id="r10img" src=""><p id="r10url" class="hidden"></p> </div>
                     </div>
                     <div class="siguiente-anterior">
                         <div id="anterior">Previous page</div>
@@ -147,7 +150,7 @@
                 <div id="ficha-planets" class="hidden">
                         <div>
                             <div>name: </div>
-                            <div id="pl-name" class="f-contents"></div>
+                            <div id="pl-name" class="f-contents">sdfdsf</div>
                         </div>
                         <img id="pl-image" src="" alt="">
                         <div>
@@ -361,6 +364,6 @@
         </div>
 
     </div>
-    
+    <script type="module" src="./assets/js/main.js"></script>
 </body>
 </html>
