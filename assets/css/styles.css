@@ -90,6 +90,7 @@ header{
     border: solid 3px #FFE81F;
     border-radius: 5px;
     margin-top: 160px;
+    background-color: rgb(34, 34, 34,0.6); /* #222222 */
 }
 .default{
     display: flex;
@@ -130,11 +131,11 @@ header{
     cursor: pointer;
     text-align: center;
 }
-#ficha-films{
+#ficha-films,#ficha-people{
     flex-direction: column;
 }
 
-#f-image{
+#f-image,#p-image{
     height: 50px;
     margin: 10px;
 }
@@ -143,6 +144,26 @@ header{
     display: inline-block;
     margin-top: 10px;
     padding-bottom: 10px;
+}
+.footer{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #FFE81F;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(34, 34, 34,0.7);
+}
+.footer a:link{
+    color: #ffffff;
+}.footer a:visited{
+    color: #ffffff;
+}
+.footer a:hover{
+    color: #FFE81F;
+}
+.footer a:active{
+    color: #FFE81F;
 }
 
 /* ================================================= */

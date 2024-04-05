@@ -27,7 +27,7 @@
             </header>
             <section id="main-container">
                 <!-- ==================================================== -->
-                <div id="default" class="hidden"> <!-- class="default" -->
+                <div id="default" class="default"> <!-- class="default" -->
                     <div id="default-films" class="default-contents"><img src="./assets/img/films/0.jpg">films</div>
                     <div id="default-people" class="default-contents"><img src="./assets/img/people/0.jpg">people</div>
                     <div id="default-planets" class="default-contents"><img src="./assets/img/planets/0.jpg">planets</div>
@@ -55,42 +55,309 @@
                     </div>
                 </div>
                  <!-- ==================================================== -->
-                 <div id="ficha-films" class="default">
+                 <div id="ficha-films" class="hidden">
                 <div>
-                    <div>movie name: </div>
-                    <div id="f-name" class="f-contents"></div>
+                            <div>movie name: </div>
+                            <div id="f-name" class="f-contents"></div>
+                        </div>
+                        <img id="f-image" src="" alt="">
+                        <div>
+                            <div>movie director: </div>
+                            <div id="f-director" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>characters: </div>
+                            <div id="f-characters" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>planets: </div>
+                            <div id="f-planets" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>starships:</div>
+                            <div id="f-starships" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>species:</div>
+                            <div id="f-species" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>opening paragraph:</div>
+                            <div id="f-paragraph" class="f-contents"></div>
+                        </div>
                 </div>
-                <img id="f-image" src="" alt="">
-                <div>
-                    <div>movie director: </div>
-                    <div id="f-director" class="f-contents"></div>
-                </div>
-                <div>
-                    <div>characters: </div>
-                    <div id="f-characters" class="f-contents"></div>
-                </div>
-                <div>
-                    <div>planets: </div>
-                    <div id="f-planets" class="f-contents"></div>
-                </div>
-                <div>
-                    <div>starships:</div>
-                    <div id="f-starships" class="f-contents"></div>
-                </div>
-                <div>
-                    <div>species:</div>
-                    <div id="f-species" class="f-contents"></div>
-                </div>
-                <div>
-                    <div>opening paragraph:</div>
-                    <div id="f-paragraph" class="f-contents"></div>
-                </div>
-
-
-
-                 </div>
                   <!-- ==================================================== -->
+                <div id="ficha-people" class="hidden">
+                        <div>
+                            <div>name: </div>
+                            <div id="p-name" class="f-contents"></div>
+                        </div>
+                        <img id="p-image" src="" alt="">
+                        <div>
+                            <div>birth year: </div>
+                            <div id="p-birth" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>gender: </div>
+                            <div id="p-gender" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>species:</div>
+                            <div id="p-species" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>height: </div>
+                            <div id="p-height" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>mass: </div>
+                            <div id="p-mass" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>hair color: </div>
+                            <div id="p-hair" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>skin color: </div>
+                            <div id="p-skin" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>eye color: </div>
+                            <div id="p-eye" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>homeworld: </div>
+                            <div id="p-planets" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>films:</div>
+                            <div id="p-films" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>starships:</div>
+                            <div id="p-starships" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>vehicles:</div>
+                            <div id="p-vehicles" class="f-contents"></div>
+                        </div>
+
+                </div>
+                     <!-- ==================================================== -->
+                <div id="ficha-planets" class="hidden">
+                        <div>
+                            <div>name: </div>
+                            <div id="pl-name" class="f-contents"></div>
+                        </div>
+                        <img id="pl-image" src="" alt="">
+                        <div>
+                            <div>diameter: </div>
+                            <div id="pl-diameter" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>rotation period: </div>
+                            <div id="p-rotation" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>gravity:</div>
+                            <div id="pl-gravity" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>population: </div>
+                            <div id="pl-population" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>climate: </div>
+                            <div id="pl-climate" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>terrain: </div>
+                            <div id="pl-terrain" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>surface water: </div>
+                            <div id="pl-water" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>residents: </div>
+                            <div id="pl-residents" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>films: </div>
+                            <div id="pl-films" class="f-contents"></div>
+                        </div>
+                </div>
+
+                     <!-- ==================================================== -->
+                <div id="ficha-species" class="hidden">
+                        <div>
+                            <div>name: </div>
+                            <div id="sp-name" class="f-contents"></div>
+                        </div>
+                        <img id="sp-image" src="" alt="">
+                        <div>
+                            <div>classification: </div>
+                            <div id="sp-classification" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>designation: </div>
+                            <div id="sp-designation" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>average height:</div>
+                            <div id="sp-height" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>average lifespan: </div>
+                            <div id="sp-lifespan" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>eye colors: </div>
+                            <div id="sp-eyes" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>hair colors: </div>
+                            <div id="sp-hair" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>skin colors: </div>
+                            <div id="sp-skin" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>language: </div>
+                            <div id="sp-language" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>homeworld: </div>
+                            <div id="sp-homeworld" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>people: </div>
+                            <div id="sp-people" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>films: </div>
+                            <div id="sp-films" class="f-contents"></div>
+                        </div>
+                </div>
+
+                     <!-- ==================================================== -->
+                <div id="ficha-vehicles" class="hidden">
+                        <div>
+                            <div>name: </div>
+                            <div id="v-name" class="f-contents"></div>
+                        </div>
+                        <img id="v-image" src="" alt="">
+                        <div>
+                            <div>model: </div>
+                            <div id="v-model" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>vehicle class: </div>
+                            <div id="v-class" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>manufacturer: </div>
+                            <div id="v-manufacturer" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>lenght: </div>
+                            <div id="v-lenght" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>cost in credits: </div>
+                            <div id="v-cost" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>crew: </div>
+                            <div id="v-crew" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>passengers: </div>
+                            <div id="v-passengers" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>max atmosphering speed: </div>
+                            <div id="v-speed" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>cargo capacity: </div>
+                            <div id="v-capacity" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>films: </div>
+                            <div id="v-films" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>pilots: </div>
+                            <div id="v-pilots" class="f-contents"></div>
+                        </div>
+                </div>
+
+                     <!-- ==================================================== -->
+                     <div id="ficha-starships" class="hidden">
+                        <div>
+                            <div>name: </div>
+                            <div id="s-name" class="f-contents"></div>
+                        </div>
+                        <img id="s-image" src="" alt="">
+                        <div>
+                            <div>model: </div>
+                            <div id="s-model" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>starship class: </div>
+                            <div id="s-class" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>manufacturer: </div>
+                            <div id="s-manufacturer" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>lenght: </div>
+                            <div id="s-lenght" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>cost in credits: </div>
+                            <div id="s-cost" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>crew: </div>
+                            <div id="s-crew" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>passengers: </div>
+                            <div id="s-passengers" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>max atmosphering speed: </div>
+                            <div id="s-speed" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>hyperdrive scale: </div>
+                            <div id="s-hyper" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>cargo capacity: </div>
+                            <div id="s-capacity" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>films: </div>
+                            <div id="v-films" class="f-contents"></div>
+                        </div>
+                        <div>
+                            <div>pilots: </div>
+                            <div id="v-pilots" class="f-contents"></div>
+                        </div>
+                </div>
+
+                     <!-- ==================================================== -->
             </section>
+            <footer>
+                <div class="footer">Web developed by Igor Andzheyevskiy<br>
+                Using <a href="https://swapi.dev/">SWAPI</a><br>
+            Source code on: <a href="https://github.com/andzheyevskiy/SWDB">GITHUB</a></div>
+            </footer>
         </div>
 
     </div>
