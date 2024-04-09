@@ -11,6 +11,7 @@ const botonesNav={
     species:document.getElementById("species"),
     vehicles:document.getElementById("vehicles"),
     spaceships:document.getElementById("spaceships"),
+    checkbox: function(){document.getElementById("mobile-navbar").checked=false},
 }
 const botonesMain={
     films:document.getElementById("default-films"),
@@ -214,66 +215,79 @@ botonHome.onclick = function(){
     selection=""
     page=1
     hidecontent("default")
+    botonesNav.checkbox()
 }
 botonesNav.films.onclick = function(){
     selection="films"
     page=1
     hidecontent("busqueda")
+    botonesNav.checkbox()
 }
 botonesMain.films.onclick = function(){
     selection="films"
     page=1
     hidecontent("busqueda")
+    botonesNav.checkbox()
 }
 botonesNav.people.onclick = function(){
     selection="people"
     page=1
     hidecontent("busqueda")
+    botonesNav.checkbox()
 }
 botonesMain.people.onclick = function(){
     selection="people"
     page=1
     hidecontent("busqueda")
+    botonesNav.checkbox()
 }
 botonesNav.planets.onclick = function(){
     selection="planets"
     page=1
     hidecontent("busqueda")
+    botonesNav.checkbox()
 }
 botonesMain.planets.onclick = function(){
     selection="planets"
     page=1
     hidecontent("busqueda")
+    botonesNav.checkbox()
 }
 botonesNav.species.onclick = function(){
     selection="species"
     page=1
     hidecontent("busqueda")
+    botonesNav.checkbox()
 }
 botonesMain.species.onclick = function(){
     selection="species"
     page=1
     hidecontent("busqueda")
+    botonesNav.checkbox()
 }
 botonesNav.vehicles.onclick = function(){
     selection="vehicles"
     page=1
     hidecontent("busqueda")
+    botonesNav.checkbox()
 }
 botonesMain.vehicles.onclick = function(){
     selection="vehicles"
     page=1
     hidecontent("busqueda")
+    botonesNav.checkbox()
 }
 botonesNav.spaceships.onclick = function(){
     selection="starships"
     page=1
     hidecontent("busqueda")
+    botonesNav.checkbox()
 }
 botonesMain.spaceships.onclick = function(){
     selection="starships"
     page=1
     hidecontent("busqueda")
+    botonesNav.checkbox()
 }
 
 
