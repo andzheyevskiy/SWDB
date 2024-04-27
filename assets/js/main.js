@@ -1,7 +1,23 @@
-//==========SWAPI MODULE===============/
-
-import {swapiModule} from "./swapi.js"
-
+//==========FETCH MODULE===============/
+async function fetchModule(selector){
+    const root= "https://swapi.py4e.com/api/"
+    let url;
+    switch(selector){
+    case "films":
+    case "people":
+    case "planets":
+    case "species":
+    case "vehicles":
+    case "spaceships":
+        url= root + selector +"/";
+        break;
+    default:
+        url= selector;
+    }
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data); 
+}
 //==========OBJECTS====================//
 const botonHome=document.getElementById("contenedorlogo")
 const checkbox = function(){document.getElementById("mobile-navbar").checked=false}
@@ -69,18 +85,6 @@ const busqueda = {
         document.getElementById("r7img"),
         document.getElementById("r8img"),
         document.getElementById("r9img"),
-    ],
-    url:[
-        document.getElementById("r0url"),
-        document.getElementById("r1url"),
-        document.getElementById("r2url"),
-        document.getElementById("r3url"),
-        document.getElementById("r4url"),
-        document.getElementById("r5url"),
-        document.getElementById("r6url"),
-        document.getElementById("r7url"),
-        document.getElementById("r8url"),
-        document.getElementById("r9url"),
     ],
     siguiente: document.getElementById("siguiente"),
     anterior: document.getElementById("anterior"),
@@ -171,12 +175,11 @@ const fichas = {
         pilots:document.getElementById("s-pilots"),
     }
 }
-
+//=================================================================//
+//=================================================================//
 //==============VARIABLES==============//
 
-var page; //1 by default
 var selection; //films,people,planets,species,vehicles,starships
-var id; //aqui ira el ID del elemento seleccionado.
 
 //==============FUNCIONS===============//
 
@@ -194,14 +197,12 @@ const hidecontent = function(visible){
 
 botonHome.onclick = function(){
     selection="";
-    page=1;
     hidecontent(0);
     checkbox();
 }
 for(let i of botones){
     i.dom.onclick= function(){
     selection=i.selector;
-    page=1;
     hidecontent(1);
     checkbox();
     }
