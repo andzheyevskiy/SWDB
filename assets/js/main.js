@@ -4,33 +4,47 @@ import {swapiModule} from "./swapi.js"
 
 //==========OBJECTS====================//
 const botonHome=document.getElementById("contenedorlogo")
-const botonesNav={
-    films:document.getElementById("films"),
-    people:document.getElementById("people"),
-    planets:document.getElementById("planets"),
-    species:document.getElementById("species"),
-    vehicles:document.getElementById("vehicles"),
-    spaceships:document.getElementById("spaceships"),
-    checkbox: function(){document.getElementById("mobile-navbar").checked=false},
-}
-const botonesMain={
-    films:document.getElementById("default-films"),
-    people:document.getElementById("default-people"),
-    planets:document.getElementById("default-planets"),
-    species:document.getElementById("default-species"),
-    vehicles:document.getElementById("default-vehicles"),
-    spaceships:document.getElementById("default-spaceships"),
-}
-const contenedores ={
-    default: document.getElementById("default"),
-    busqueda: document.getElementById("contenedor-busqueda"),
-    fichaFilms: document.getElementById("ficha-films"),
-    fichaPeople: document.getElementById("ficha-people"),
-    fichaPlanets: document.getElementById("ficha-planets"),
-    fichaSpecies: document.getElementById("ficha-species"),
-    fichaVehicles: document.getElementById("ficha-vehicles"),
-    fichaStarships: document.getElementById("ficha-starships"),
-}
+const checkbox = function(){document.getElementById("mobile-navbar").checked=false}
+const botones=[
+//Nav buttons //
+    {dom:document.getElementById("films"),
+    selector: "films"},
+    {dom:document.getElementById("people"),
+    selector: "people"},
+    {dom:document.getElementById("planets"),
+    selector: "planets"},
+    {dom:document.getElementById("species"),
+    selector: "species"},
+    {dom:document.getElementById("vehicles"),
+    selector: "vehicles"},
+    {dom:document.getElementById("spaceships"),
+    selector: "spaceships"},
+// Main Screen Buttons //
+    {dom:document.getElementById("default-films"),
+    selector: "films"},
+    {dom:document.getElementById("default-people"),
+    selector: "people"},
+    {dom:document.getElementById("default-planets"),
+    selector: "planets"},
+    {dom:document.getElementById("default-species"),
+    selector: "species"},
+    {dom:document.getElementById("default-vehicles"),
+    selector: "vehicles"},
+    {dom:document.getElementById("default-spaceships"),
+    selector: "spaceships"}
+
+]
+
+const contenedores =[
+    document.getElementById("default"), /* default */
+    document.getElementById("contenedor-busqueda"), /* busqueda */
+    document.getElementById("ficha-films"), /* fichaFilms */
+    document.getElementById("ficha-people"), /* fichaPeople */
+    document.getElementById("ficha-planets"), /* fichaPlanets */
+    document.getElementById("ficha-species"), /* fichaSpecies */
+    document.getElementById("ficha-vehicles"), /* fichaVehicles */
+    document.getElementById("ficha-starships"), /* fichaStarships */
+]
 const busqueda = {
     content:[
         document.getElementById("r0"),
@@ -168,43 +182,10 @@ var id; //aqui ira el ID del elemento seleccionado.
 
 //Funcion para mostar y ocultar dinamicamente los contenedores//
 const hidecontent = function(visible){
-    contenedores.default.setAttribute("class","hidden")
-    contenedores.busqueda.setAttribute("class","hidden")
-    contenedores.fichaFilms.setAttribute("class","hidden")
-    contenedores.fichaPeople.setAttribute("class","hidden")
-    contenedores.fichaPlanets.setAttribute("class","hidden")
-    contenedores.fichaSpecies.setAttribute("class","hidden")
-    contenedores.fichaVehicles.setAttribute("class","hidden")
-    contenedores.fichaStarships.setAttribute("class","hidden")
-    switch (visible){
-        case "default":
-            contenedores.default.setAttribute("class","default");
-            break;
-        case "busqueda":
-            contenedores.busqueda.setAttribute("class","default");
-            break;
-        case "films":
-            contenedores.fichaFilms.setAttribute("class","default");
-            break;
-        case "people":
-            contenedores.fichaPeople.setAttribute("class","default");
-            break;
-        case "planets":
-            contenedores.fichaPlanets.setAttribute("class","default");
-            break;
-        case "species":
-            contenedores.fichaSpecies.setAttribute("class","default");
-            break;
-        case "vehicles":
-            contenedores.fichaVehicles.setAttribute("class","default");
-            break;
-        case "starships":
-            contenedores.fichaStarships.setAttribute("class","default");
-            break;
-        default:
-            contenedores.default.setAttribute("class","default");
-            console.log("Funcion hidecontent no funciona correctamente") 
-    }
+    for(let i of contenedores){
+        i.setAttribute("class","hidden")
+    } 
+    contenedores[visible].setAttribute("class","default");
 }
 
 //==================SCRIPTS============//
@@ -212,83 +193,21 @@ const hidecontent = function(visible){
 //BOTONES PRINCIPALES ON-CLICK//
 
 botonHome.onclick = function(){
-    selection=""
-    page=1
-    hidecontent("default")
-    botonesNav.checkbox()
+    selection="";
+    page=1;
+    hidecontent(0);
+    checkbox();
 }
-botonesNav.films.onclick = function(){
-    selection="films"
-    page=1
-    hidecontent("busqueda")
-    botonesNav.checkbox()
+for(let i of botones){
+    i.dom.onclick= function(){
+    selection=i.selector;
+    page=1;
+    hidecontent(1);
+    checkbox();
+    }
 }
-botonesMain.films.onclick = function(){
-    selection="films"
-    page=1
-    hidecontent("busqueda")
-    botonesNav.checkbox()
-}
-botonesNav.people.onclick = function(){
-    selection="people"
-    page=1
-    hidecontent("busqueda")
-    botonesNav.checkbox()
-}
-botonesMain.people.onclick = function(){
-    selection="people"
-    page=1
-    hidecontent("busqueda")
-    botonesNav.checkbox()
-}
-botonesNav.planets.onclick = function(){
-    selection="planets"
-    page=1
-    hidecontent("busqueda")
-    botonesNav.checkbox()
-}
-botonesMain.planets.onclick = function(){
-    selection="planets"
-    page=1
-    hidecontent("busqueda")
-    botonesNav.checkbox()
-}
-botonesNav.species.onclick = function(){
-    selection="species"
-    page=1
-    hidecontent("busqueda")
-    botonesNav.checkbox()
-}
-botonesMain.species.onclick = function(){
-    selection="species"
-    page=1
-    hidecontent("busqueda")
-    botonesNav.checkbox()
-}
-botonesNav.vehicles.onclick = function(){
-    selection="vehicles"
-    page=1
-    hidecontent("busqueda")
-    botonesNav.checkbox()
-}
-botonesMain.vehicles.onclick = function(){
-    selection="vehicles"
-    page=1
-    hidecontent("busqueda")
-    botonesNav.checkbox()
-}
-botonesNav.spaceships.onclick = function(){
-    selection="starships"
-    page=1
-    hidecontent("busqueda")
-    botonesNav.checkbox()
-}
-botonesMain.spaceships.onclick = function(){
-    selection="starships"
-    page=1
-    hidecontent("busqueda")
-    botonesNav.checkbox()
-}
+
+
 
 
 //////////////// PRUEBA DE LA FUNCIONALIDAD DE PROMESAS.///////////////////////
