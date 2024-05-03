@@ -105,15 +105,21 @@ header{
     text-align: center;
     text-shadow: 1px 1px 0px #000000;
 }
+#contenedor-busqueda{
+    display: flex;
+    flex-direction: column;
+    
+}
 #busqueda{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-transform: lowercase;
 }
 .default-contents{
-    height: 200px;
-    width: 200px;
+    aspect-ratio: 1/1;
+    width: 70%;
     margin-top: 35px;
     user-select: none;
     cursor: pointer;
@@ -130,11 +136,13 @@ header{
     display: flex;
     justify-content: center;
     padding-bottom: 20px;
+    margin-top: 70px;
+
 }
 #siguiente,#anterior{
     color: #FFE81F;
     font-family: StarJediOutline;
-    font-size: 20px;
+    font-size: 30px;
     margin-left: 25px;
     margin-right: 25px;
     cursor: pointer;
@@ -197,8 +205,7 @@ header{
         justify-content: space-evenly;
     }
     .default-contents{
-        height: 225px;
-        width: 225px;
+        width: 45%;
         margin-left: 10px;
         margin-right: 10px;
         margin-bottom: 10px;
@@ -233,13 +240,14 @@ header{
     #main-container{
         margin-top: 20px;
     }
+   
     .default{
         font-size: 23px;
     }
     .default-contents{
-        height: 250px;
-        width: 250px;
-        margin-bottom: 15px;
+        width: 29%;
+        margin-top: 50px;
+
     }
     #f-image,#p-image,#pl-image,#sp-image,#v-image,#s-image{
         height: 250px;

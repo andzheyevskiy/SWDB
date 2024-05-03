@@ -1,6 +1,6 @@
 //==========FETCH MODULE===============/
 async function fetchModule(selector){
-    const root= "https://swapi.py4e.com/api/"
+    const root= "https://swapi.dev/api/"
     let url;
     switch(selector){
     case "films":
@@ -8,7 +8,7 @@ async function fetchModule(selector){
     case "planets":
     case "species":
     case "vehicles":
-    case "spaceships":
+    case "starships":
         url= root + selector +"/";
         break;
     default:
@@ -16,7 +16,8 @@ async function fetchModule(selector){
     }
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data); 
+    console.log(data)
+    return data
 }
 //==========OBJECTS====================//
 const botonHome=document.getElementById("contenedorlogo")
@@ -34,7 +35,7 @@ const botones=[
     {dom:document.getElementById("vehicles"),
     selector: "vehicles"},
     {dom:document.getElementById("spaceships"),
-    selector: "spaceships"},
+    selector: "starships"},
 // Main Screen Buttons //
     {dom:document.getElementById("default-films"),
     selector: "films"},
@@ -47,7 +48,7 @@ const botones=[
     {dom:document.getElementById("default-vehicles"),
     selector: "vehicles"},
     {dom:document.getElementById("default-spaceships"),
-    selector: "spaceships"}
+    selector: "starships"}
 
 ]
 
@@ -61,37 +62,13 @@ const contenedores =[
     document.getElementById("ficha-vehicles"), /* fichaVehicles */
     document.getElementById("ficha-starships"), /* fichaStarships */
 ]
-const busqueda = {
-    content:[
-        document.getElementById("r0"),
-        document.getElementById("r1"),
-        document.getElementById("r2"),
-        document.getElementById("r3"),
-        document.getElementById("r4"),
-        document.getElementById("r5"),
-        document.getElementById("r6"),
-        document.getElementById("r7"),
-        document.getElementById("r8"),
-        document.getElementById("r9"),
-    ],
-    img:[
-        document.getElementById("r0img"),
-        document.getElementById("r1img"),
-        document.getElementById("r2img"),
-        document.getElementById("r3img"),
-        document.getElementById("r4img"),
-        document.getElementById("r5img"),
-        document.getElementById("r6img"),
-        document.getElementById("r7img"),
-        document.getElementById("r8img"),
-        document.getElementById("r9img"),
-    ],
-    siguiente: document.getElementById("siguiente"),
-    anterior: document.getElementById("anterior"),
-}
+const busqueda = [
+    document.getElementById("siguiente"),
+    document.getElementById("anterior"),
+]
 const fichas = {
     films:{
-        name:document.getElementById("f-name"),
+        title:document.getElementById("f-name"),
         image:document.getElementById("f-image"),
         director:document.getElementById("f-director"),
         characters:document.getElementById("f-characters"),
@@ -184,12 +161,46 @@ var selection; //films,people,planets,species,vehicles,starships
 //==============FUNCIONS===============//
 
 //Funcion para mostar y ocultar dinamicamente los contenedores//
-const hidecontent = function(visible){
+const hideContent = function(visible){
     for(let i of contenedores){
         i.setAttribute("class","hidden")
     } 
     contenedores[visible].setAttribute("class","default");
 }
+
+const resultConstructor =(data)=>{
+    //Declare destiny div for each result element
+    const busquedaint=document.getElementById("busqueda")
+    //Result cleanup
+    busquedaint.innerHTML =""
+    //Append result 
+    const resultData = data.results 
+    for(let i=0; i<resultData.length;i++){
+        let keys = Object.keys(fichas[selection])
+        busquedaint.innerHTML += `
+        <div id="r-${i}" class="default-contents"><img src="./assets/img/${selection}/${resultData[i][keys[0]].replace(" ","%20")}.jpg"><p>${resultData[i][keys[0]]}</p></div>
+        `
+    }
+    //Next - Previous buttons
+    //Next
+    if(!data.next){
+busqueda[0].setAttribute("class","hidden")
+    }else{
+busqueda[0].setAttribute("class","")    
+busqueda[0].setAttribute("data-url",data.next)
+    }
+    //Previous
+    if(!data.previous){
+busqueda[1].setAttribute("class","hidden")
+    }else{
+busqueda[1].setAttribute("class","")  
+busqueda[1].setAttribute("data-url",data.previous)  
+    }
+
+
+}
+
+
 
 //==================SCRIPTS============//
 
@@ -197,18 +208,24 @@ const hidecontent = function(visible){
 
 botonHome.onclick = function(){
     selection="";
-    hidecontent(0);
+    hideContent(0);
     checkbox();
 }
 for(let i of botones){
     i.dom.onclick= function(){
     selection=i.selector;
-    hidecontent(1);
+    hideContent(1);
     checkbox();
+    fetchModule(selection).then((data)=>{resultConstructor(data)})
     }
 }
 
-
+//Boton Next-Previos
+for(let i of busqueda){
+    i.onclick = function(){
+        fetchModule(i.dataset.url).then((data)=>{resultConstructor(data)}) 
+    }
+}
 
 
 //////////////// PRUEBA DE LA FUNCIONALIDAD DE PROMESAS.///////////////////////
