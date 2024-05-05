@@ -167,16 +167,75 @@ const hideContent = function(visible){
     }
     contenedores[visible].setAttribute("class","default");
 }
+const insertContent=(origin, destiny)=>{
+    origin.insertAdjacentHTML("beforeend",destiny?destiny:"Not Available")
+}
+
 const fileConstructor = (selector,data)=>{
     hideContent((selector))
-    const keys = Object.keys(fichas[selection])
-    console.log(data)
+    const keys = Object.keys(fichas[selector])
     for(let i=0; i<keys.length; i++){
         fichas[selector][keys[i]].innerHTML=" "
-        fichas[selector][keys[i]].insertAdjacentHTML("beforeend",data[keys[i]]?data[keys[i]]:"Not Available")
+        let origin =""
+        let destiny =""
+        switch([keys[i]][0]){
+        case "image":
+            destiny=`
+            <img class="inner-img" src="./assets/img/${selector}/${data[keys[0]].replace(" ","%20")}.jpg">
+            `
+            insertContent(fichas[selector][keys[i]],destiny)
+            break
+        case "films":
+            data[keys[i]].forEach((url)=>{
+                fetchModule(url).then((data)=>{
+                    destiny=`
+                    <div id="${url}">${data["title"]}<div>
+                    `
+                    insertContent(fichas[selector][keys[i]],destiny)
+                    document.getElementById(url).addEventListener("click", ()=>{
+                        fetchModule(url).then((data)=>fileConstructor([keys[i]][0],data)) 
+                    })
+                    })
 
+            })
+            break
+        case "people":
+        case "planets":
+        case "species":
+        case "vehicles":
+        case "starships":
+            data[keys[i]].forEach((url)=>{
+                fetchModule(url).then((data)=>{
+                    destiny=`
+                    <div id="${url}">${data["name"]}<div>
+                    `
+                    insertContent(fichas[selector][keys[i]],destiny)
+                    document.getElementById(url).addEventListener("click", ()=>{
+                        fetchModule(url).then((data)=>fileConstructor([keys[i]][0],data)) 
+                    })
+                    })
+
+            })
+            break
+            ////SPECIAL NOT AUTOMATED CASES ////
+        case "homeworld":
+            fetchModule(data[keys[i]]).then((data)=>{
+                destiny=`
+                <div id="${data.url}">${data.name}</div>
+                `
+                insertContent(fichas[selector][keys[i]],destiny)
+                document.getElementById(data.url).addEventListener("click", ()=>{
+                    fetchModule(data.url).then((data)=>fileConstructor("planets",data)) 
+                })
+                })
+            break
+
+        default:
+            insertContent(fichas[selector][keys[i]],data[keys[i]])
+            break
+        }
+       
     }
-    console.log(data["vehicles"])
 }
 
 const resultConstructor =(data)=>{
