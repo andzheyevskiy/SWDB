@@ -106,7 +106,6 @@ header{
     text-shadow: 1px 1px 0px #000000;
 }
 #contenedor-busqueda{
-    display: flex;
     flex-direction: column;
     
 }
@@ -148,8 +147,9 @@ header{
     cursor: pointer;
     text-align: center;
 }
-#ficha-films,#ficha-people{
+#ficha-films,#ficha-people,#ficha-planets,#ficha-species,#ficha-vehicles,#ficha-starships{
     flex-direction: column;
+    text-transform: lowercase;
 }
 
 #f-image,#p-image,#pl-image,#sp-image,#v-image,#s-image{
@@ -162,6 +162,7 @@ header{
     display: inline-block;
     margin-top: 10px;
     padding-bottom: 10px;
+    font-size: 23px;
 }
 .footer{
     margin-top: 20px;

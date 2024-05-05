@@ -1,6 +1,6 @@
 //==========FETCH MODULE===============/
 async function fetchModule(selector){
-    const root= "https://swapi.dev/api/"
+    const root= "https://swapi.py4e.com/api/"
     let url;
     switch(selector){
     case "films":
@@ -16,7 +16,7 @@ async function fetchModule(selector){
     }
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data)
+/*     console.log(data) */
     return data
 }
 //==========OBJECTS====================//
@@ -52,16 +52,16 @@ const botones=[
 
 ]
 
-const contenedores =[
-    document.getElementById("default"), /* default */
-    document.getElementById("contenedor-busqueda"), /* busqueda */
-    document.getElementById("ficha-films"), /* fichaFilms */
-    document.getElementById("ficha-people"), /* fichaPeople */
-    document.getElementById("ficha-planets"), /* fichaPlanets */
-    document.getElementById("ficha-species"), /* fichaSpecies */
-    document.getElementById("ficha-vehicles"), /* fichaVehicles */
-    document.getElementById("ficha-starships"), /* fichaStarships */
-]
+const contenedores ={
+    default:document.getElementById("default"), /* default */
+    busqueda:document.getElementById("contenedor-busqueda"), /* busqueda */
+    films:document.getElementById("ficha-films"), /* fichaFilms */
+    people:document.getElementById("ficha-people"), /* fichaPeople */
+    planets:document.getElementById("ficha-planets"), /* fichaPlanets */
+    species:document.getElementById("ficha-species"), /* fichaSpecies */
+    vehicles:document.getElementById("ficha-vehicles"), /* fichaVehicles */
+    starships:document.getElementById("ficha-starships"), /* fichaStarships */
+}
 const busqueda = [
     document.getElementById("siguiente"),
     document.getElementById("anterior"),
@@ -75,18 +75,19 @@ const fichas = {
         planets:document.getElementById("f-planets"),
         starships:document.getElementById("f-starships"),
         species:document.getElementById("f-species"),
-        paragraph:document.getElementById("f-paragraph"),
+        opening_crawl:document.getElementById("f-paragraph"),
     },
     people:{
         name:document.getElementById("p-name"),
         image:document.getElementById("p-image"),
-        birth:document.getElementById("p-birth"),
+        birth_year:document.getElementById("p-birth"),
         gender:document.getElementById("p-gender"),
         species:document.getElementById("p-species"),
         height:document.getElementById("p-height"),
-        hair:document.getElementById("p-hair"),
-        skin:document.getElementById("p-skin"),
-        eye:document.getElementById("p-eye"),
+        mass:document.getElementById("p-mass"),
+        hair_color:document.getElementById("p-hair"),
+        skin_color:document.getElementById("p-skin"),
+        eye_color:document.getElementById("p-eye"),
         homeworld:document.getElementById("p-homeworld"),
         films:document.getElementById("p-films"),
         starships:document.getElementById("p-starships"),
@@ -96,7 +97,7 @@ const fichas = {
         name:document.getElementById("pl-name"),
         image:document.getElementById("pl-image"),
         diameter:document.getElementById("pl-diameter"),
-        rotation:document.getElementById("pl-rotation"),
+        rotation_period:document.getElementById("pl-rotation"),
         gravity:document.getElementById("pl-gravity"),
         population:document.getElementById("pl-population"),
         climate:document.getElementById("pl-climate"),
@@ -118,7 +119,7 @@ const fichas = {
         language:document.getElementById("sp-language"),
         homeworld:document.getElementById("sp-homeworld"),
         people:document.getElementById("sp-people"),
-        name:document.getElementById("sp-films"),
+        films:document.getElementById("sp-films"),
     },
     vehicles:{
         name:document.getElementById("v-name"),
@@ -132,8 +133,7 @@ const fichas = {
         passengers:document.getElementById("v-passengers"),
         speed:document.getElementById("v-speed"),
         capacity:document.getElementById("v-capacity"),
-        name:document.getElementById("v-films"),
-        name:document.getElementById("v-pilots"),
+        films:document.getElementById("v-films"),
     },
     starships:{
         name:document.getElementById("s-name"),
@@ -149,7 +149,6 @@ const fichas = {
         hyper:document.getElementById("s-hyper"),
         capacity:document.getElementById("s-capacity"),
         films:document.getElementById("s-films"),
-        pilots:document.getElementById("s-pilots"),
     }
 }
 //=================================================================//
@@ -162,10 +161,22 @@ var selection; //films,people,planets,species,vehicles,starships
 
 //Funcion para mostar y ocultar dinamicamente los contenedores//
 const hideContent = function(visible){
-    for(let i of contenedores){
-        i.setAttribute("class","hidden")
-    } 
+    const keys= Object.keys(contenedores)
+    for(let i of keys){
+        contenedores[i].setAttribute("class","hidden")
+    }
     contenedores[visible].setAttribute("class","default");
+}
+const fileConstructor = (selector,data)=>{
+    hideContent((selector))
+    const keys = Object.keys(fichas[selection])
+    console.log(data)
+    for(let i=0; i<keys.length; i++){
+        fichas[selector][keys[i]].innerHTML=" "
+        fichas[selector][keys[i]].insertAdjacentHTML("beforeend",data[keys[i]]?data[keys[i]]:"Not Available")
+
+    }
+    console.log(data["vehicles"])
 }
 
 const resultConstructor =(data)=>{
@@ -177,9 +188,13 @@ const resultConstructor =(data)=>{
     const resultData = data.results 
     for(let i=0; i<resultData.length;i++){
         let keys = Object.keys(fichas[selection])
-        busquedaint.innerHTML += `
+        busquedaint.insertAdjacentHTML("beforeend",`
         <div id="r-${i}" class="default-contents"><img src="./assets/img/${selection}/${resultData[i][keys[0]].replace(" ","%20")}.jpg"><p>${resultData[i][keys[0]]}</p></div>
-        `
+        `)
+        document.getElementById(`r-${i}`).addEventListener("click",()=>{
+            fetchModule(resultData[i].url).then((data)=>fileConstructor(selection,data))
+            /* fileConstructor(selection,fetchModule(resultData[i].url)) */
+        })
     }
     //Next - Previous buttons
     //Next
@@ -208,13 +223,13 @@ busqueda[1].setAttribute("data-url",data.previous)
 
 botonHome.onclick = function(){
     selection="";
-    hideContent(0);
+    hideContent("default");
     checkbox();
 }
 for(let i of botones){
     i.dom.onclick= function(){
     selection=i.selector;
-    hideContent(1);
+    hideContent("busqueda");
     checkbox();
     fetchModule(selection).then((data)=>{resultConstructor(data)})
     }
