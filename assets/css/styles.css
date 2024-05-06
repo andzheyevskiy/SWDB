@@ -150,6 +150,8 @@ header{
 #ficha-films,#ficha-people,#ficha-planets,#ficha-species,#ficha-vehicles,#ficha-starships{
     flex-direction: column;
     text-transform: lowercase;
+    align-items: center;
+    align-content: center;
 }
 
 #p-image,#pl-image,#sp-image,#v-image,#s-image{
@@ -162,16 +164,25 @@ header{
     width: 200px;
     margin: 10px;
 }
+#paragraph{
+    width: 95%;
+    max-width: 770px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 #f-paragraph{
 font-family: sans-serif;
-text-align: justify;
+text-align: center;
+font-size: 20px;
 color: #FFE81F;
-width: 85%;
 background-color: #000000;
 text-transform: initial;
-line-height: 2;
+line-height: 2.5;
 margin-top: 20px;
-padding: 3% 5%;
+padding: 20px 5%;
+border: #FFE81F solid 2px;
+border-radius: 10px;
 }
 .f-contents{
     color: #ffffff;
@@ -244,6 +255,10 @@ padding: 3% 5%;
     #ficha-films,#ficha-people,#ficha-planets,#ficha-species,#ficha-vehicles,#ficha-starships{
         flex-direction: column;
     }
+    #f-paragraph{
+        font-size: 30px;
+    }
+
 
 }
 
@@ -284,7 +299,6 @@ padding: 3% 5%;
         width: 250px;
         margin: 15px;
     }
-
 
 }
 

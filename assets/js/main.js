@@ -251,6 +251,7 @@ const fileConstructor = (selector,data)=>{
         }
        
     }
+    fichas.films.opening_crawl.innerHTML= fichas.films.opening_crawl.innerHTML.replace(/[\n\r]/g,"<br>")
 }
 
 const resultConstructor =(data)=>{
