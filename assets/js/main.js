@@ -61,6 +61,7 @@ const contenedores ={
     species:document.getElementById("ficha-species"), /* fichaSpecies */
     vehicles:document.getElementById("ficha-vehicles"), /* fichaVehicles */
     starships:document.getElementById("ficha-starships"), /* fichaStarships */
+    characters:document.getElementById("ficha-people"), /* fichaPeople */
 }
 const busqueda = [
     document.getElementById("siguiente"),
@@ -189,7 +190,7 @@ const fileConstructor = (selector,data)=>{
             data[keys[i]].forEach((url)=>{
                 fetchModule(url).then((data)=>{
                     destiny=`
-                    <div id="${url}">${data["title"]}<div>
+                    <div id="${url}" style="cursor:pointer; margin-bottom:10px">${data["title"]}<div>
                     `
                     insertContent(fichas[selector][keys[i]],destiny)
                     document.getElementById(url).addEventListener("click", ()=>{
@@ -207,7 +208,7 @@ const fileConstructor = (selector,data)=>{
             data[keys[i]].forEach((url)=>{
                 fetchModule(url).then((data)=>{
                     destiny=`
-                    <div id="${url}">${data["name"]}<div>
+                    <div id="${url}" style="cursor:pointer; margin-bottom:10px">${data["name"]}<div>
                     `
                     insertContent(fichas[selector][keys[i]],destiny)
                     document.getElementById(url).addEventListener("click", ()=>{
@@ -221,7 +222,7 @@ const fileConstructor = (selector,data)=>{
         case "homeworld":
             fetchModule(data[keys[i]]).then((data)=>{
                 destiny=`
-                <div id="${data.url}">${data.name}</div>
+                <div id="${data.url}" style="cursor:pointer; margin-bottom:10px">${data.name}</div>
                 `
                 insertContent(fichas[selector][keys[i]],destiny)
                 document.getElementById(data.url).addEventListener("click", ()=>{
@@ -229,7 +230,21 @@ const fileConstructor = (selector,data)=>{
                 })
                 })
             break
+        case "characters":
+        case "residents":
+            data[keys[i]].forEach((url)=>{
+                fetchModule(url).then((data)=>{
+                    destiny=`
+                    <div id="${url}" style="cursor:pointer; margin-bottom:10px">${data["name"]}<div>
+                    `
+                    insertContent(fichas[selector][keys[i]],destiny)
+                    document.getElementById(url).addEventListener("click", ()=>{
+                        fetchModule(url).then((data)=>fileConstructor("people",data)) 
+                    })
+                    })
 
+            })
+            break            
         default:
             insertContent(fichas[selector][keys[i]],data[keys[i]])
             break

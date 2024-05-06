@@ -162,12 +162,24 @@ header{
     width: 200px;
     margin: 10px;
 }
+#f-paragraph{
+font-family: sans-serif;
+text-align: justify;
+color: #FFE81F;
+width: 85%;
+background-color: #000000;
+text-transform: initial;
+line-height: 2;
+margin-top: 20px;
+padding: 3% 5%;
+}
 .f-contents{
     color: #ffffff;
     display: inline-block;
     margin-top: 10px;
     padding-bottom: 10px;
     font-size: 23px;
+    
 }
 .footer{
     margin-top: 20px;
