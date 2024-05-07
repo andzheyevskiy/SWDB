@@ -190,7 +190,7 @@ const fileConstructor = (selector,data)=>{
             data[keys[i]].forEach((url)=>{
                 fetchModule(url).then((data)=>{
                     destiny=`
-                    <div id="${url}" style="cursor:pointer; margin-bottom:10px">${data["title"]}<div>
+                    <a href="#"><div id="${url}" style="cursor:pointer; margin-bottom:10px">${data["title"]}<div></a>
                     `
                     insertContent(fichas[selector][keys[i]],destiny)
                     document.getElementById(url).addEventListener("click", ()=>{
@@ -208,7 +208,7 @@ const fileConstructor = (selector,data)=>{
             data[keys[i]].forEach((url)=>{
                 fetchModule(url).then((data)=>{
                     destiny=`
-                    <div id="${url}" style="cursor:pointer; margin-bottom:10px">${data["name"]}<div>
+                    <a href="#"><div id="${url}" style="cursor:pointer; margin-bottom:10px">${data["name"]}<div></a>
                     `
                     insertContent(fichas[selector][keys[i]],destiny)
                     document.getElementById(url).addEventListener("click", ()=>{
@@ -222,7 +222,7 @@ const fileConstructor = (selector,data)=>{
         case "homeworld":
             fetchModule(data[keys[i]]).then((data)=>{
                 destiny=`
-                <div id="${data.url}" style="cursor:pointer; margin-bottom:10px">${data.name}</div>
+                <a href="#"><div id="${data.url}" style="cursor:pointer; margin-bottom:10px">${data.name}</div></a>
                 `
                 insertContent(fichas[selector][keys[i]],destiny)
                 document.getElementById(data.url).addEventListener("click", ()=>{
@@ -235,7 +235,7 @@ const fileConstructor = (selector,data)=>{
             data[keys[i]].forEach((url)=>{
                 fetchModule(url).then((data)=>{
                     destiny=`
-                    <div id="${url}" style="cursor:pointer; margin-bottom:10px">${data["name"]}<div>
+                    <a href="#"><div id="${url}" style="cursor:pointer; margin-bottom:10px">${data["name"]}<div></a>
                     `
                     insertContent(fichas[selector][keys[i]],destiny)
                     document.getElementById(url).addEventListener("click", ()=>{
