@@ -182,7 +182,7 @@ const fileConstructor = (selector,data)=>{
         switch([keys[i]][0]){
         case "image":
             destiny=`
-            <img class="inner-img" src="./assets/img/${selector}/${data[keys[0]].replace(" ","%20")}.jpg">
+            <img class="inner-img" src="./assets/img/${selector}/${data[keys[0]].replace(" ","%20").replace("/","")}.jpg">
             `
             insertContent(fichas[selector][keys[i]],destiny)
             break
@@ -264,7 +264,7 @@ const resultConstructor =(data)=>{
     for(let i=0; i<resultData.length;i++){
         let keys = Object.keys(fichas[selection])
         busquedaint.insertAdjacentHTML("beforeend",`
-        <div id="r-${i}" class="default-contents"><img src="./assets/img/${selection}/${resultData[i][keys[0]].replace(" ","%20")}.jpg"><p>${resultData[i][keys[0]]}</p></div>
+        <div id="r-${i}" class="default-contents"><img src="./assets/img/${selection}/${resultData[i][keys[0]].replace(" ","%20").replace("/","")}.jpg"><p>${resultData[i][keys[0]]}</p></div>
         `)
         document.getElementById(`r-${i}`).addEventListener("click",()=>{
             fetchModule(resultData[i].url).then((data)=>fileConstructor(selection,data))
