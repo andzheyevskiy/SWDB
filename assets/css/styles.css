@@ -155,13 +155,13 @@ header{
 }
 
 #p-image,#pl-image,#sp-image,#v-image,#s-image{
-    height: 200px;
-    width: 200px;
+    width: 80%;
+    max-width: 200px;
     margin: 10px;
 }
 #f-image{
     aspect-ratio: 9/15;
-    width: 200px;
+    width: 500px;
     margin: 10px;
 }
 #paragraph{
